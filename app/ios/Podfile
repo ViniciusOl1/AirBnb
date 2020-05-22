@@ -45,6 +45,32 @@ def flipper_post_install(installer)
 end
 
 target 'app' do
+  # Flexbox Layout Manager Used By React Natve
+pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
+
+# React Native
+pod 'React', path: '../node_modules/react-native', subspecs: [
+  # Comment out any unneeded subspecs to reduce bundle size.
+  'Core',
+  'DevSupport',
+  'RCTActionSheet',
+  'RCTAnimation',
+  'RCTBlob',
+  'RCTCameraRoll',
+  'RCTGeolocation',
+  'RCTImage',
+  'RCTNetwork',
+  'RCTPushNotification',
+  'RCTSettings',
+  'RCTTest',
+  'RCTText',
+  'RCTVibration',
+  'RCTWebSocket',
+  'RCTLinkingIOS'
+]
+
+# Mapbox
+pod 'react-native-mapbox-gl', :path => '../node_modules/@mapbox/react-native-mapbox-gl'
   # Pods for app
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
@@ -97,8 +123,5 @@ end
 target 'app-tvOS' do
   # Pods for app-tvOS
 
-  target 'app-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+
 end
