@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StatusBar } from 'react-native';
 
-import MapboxGL from '@mapbox/react-native-mapbox-gl';
+import MapboxGL from "@react-native-mapbox-gl/maps";
 
 import { 
     Container,
