@@ -58,5 +58,3 @@ export default class Main extends Component {
       );
     }
   }
-
-export default Main;

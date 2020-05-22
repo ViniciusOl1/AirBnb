@@ -25,7 +25,7 @@ export default class SignIn extends Component {
         navigation: PropTypes.shape({
             navigate: PropTypes.func,
             dispatch: PropTypes.func
-        }).isRequired,
+        }).isRequired(),
     };
     state = { email: '', password: '', error: ''};
 

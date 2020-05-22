@@ -27,15 +27,15 @@ export default class signUp extends Component{
             navigate: PropTypes.func,
             dispatch: PropTypes.func,
             goBack: PropTypes.func,
-        }).isRequired,
-    };
+        }).isRequired(),
+    }
     state = {
         username = '',
         email: '',
         password: '',
         error: '',
         success: '',
-    };
+    }
 
     handleUsernameChange = (username) => {
         this.setState({username});
