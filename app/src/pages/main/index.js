@@ -4,12 +4,45 @@ import { StatusBar } from 'react-native';
 
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
-import { Container } from './styles';
+import { 
+    Container,
+    AnnotationContainer,
+    AnnotationText 
+} from './styles';
 
 export default class Main extends Component {
     static navigationOptions = {
       header: null,
     }
+    state = {
+        locations: [],
+    }
+    async componentDidMount(){
+        try{
+            const response = await applicationCache.get('/properties', {
+                params: {
+                    latitude: -27.210768,
+                    longitude: -49.644018,
+                },
+            });
+            this.setState({ locations: response.data })
+        } catch (err) {
+            console.tron.log(err);
+        }
+    }
+    renderLocations = () => (
+        this.state.locations.map(location => (
+            <MapboxGL.PointAnnotation
+                id={location.id.toString()}
+                coordinate={[parseFloat(location.longitude), parseFloat(location.latitude)]}
+            >
+                <AnnotationContainer>
+                    <AnnotationText>{location.price}</AnnotationText>
+                </AnnotationContainer>
+                <MapboxGL.Callout title={location.title} />
+            </MapboxGL.PointAnnotation>
+        ))
+    )
   
     render() {
       return (
@@ -20,6 +53,7 @@ export default class Main extends Component {
             style={{ flex: 1 }}
             styleURL={MapboxGL.StyleURL.Dark}
           />
+          {this.rendeLocations()}
         </Container>
       );
     }
